@@ -2,7 +2,7 @@
  * Module dependencies
  */
 
-var debug = require('simple-debug')('consulate-simple-valid-redirect-uri')
+var debug = require('simple-debug')('consulate-validate-redirect-uri')
   , parse = require('url').parse;
 
 /**

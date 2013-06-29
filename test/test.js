@@ -5,7 +5,7 @@
 var should = require('should')
   , plugin = require('..');
 
-describe('consulate-simple-valid-redirect-uri', function() {
+describe('consulate-validate-redirect-uri', function() {
   var isValidClientRedirectURI, app;
 
   beforeEach(function() {
