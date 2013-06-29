@@ -1,0 +1,30 @@
+{
+  "name": "consulate-simple-valid-redirect-uri",
+  "version": "0.1.0",
+  "description": "Simple, secure redirect-uri check with wildcard support for consulate",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/consulate/consulate-simple-valid-redirect-uri"
+  },
+  "keywords": [
+    "consulate",
+    "redirect_uri",
+    "oauth"
+  ],
+  "author": "Cameron Bytheway",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/consulate/consulate-simple-valid-redirect-uri/issues"
+  },
+  "dependencies": {
+    "simple-debug": "~1.1.0"
+  },
+  "devDependencies": {
+    "should": "~1.2.2",
+    "mocha": "~1.11.0"
+  }
+}
