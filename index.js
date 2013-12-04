@@ -25,7 +25,7 @@ module.exports = function(options) {
   var match = options.match || fuzzyMatch;
 
   return function(app) {
-    app.isValidClientRedirectURI(function(client, redirect_uri, done) {
+    app.verifyClientRedirectURI(function(client, redirect_uri, done) {
       var uriList = client.redirect_uri || client.redirect_uris;
 
       var client_uris = Array.isArray(uriList)
