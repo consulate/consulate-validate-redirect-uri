@@ -64,13 +64,13 @@ function fuzzyMatch(client_uri, redirect_uri) {
 
   // Put the '*' back
   var pathname = cinfo.pathname.replace(WILDCARD, '*')
-    , host = cinfo.host.replace(WILDCARD, '.*?');
+    , host = cinfo.hostname.replace(WILDCARD, '.*?');
 
   // Build a regex for the hostname
   var hostre = new RegExp('^' + host + '$');
 
   // Fuzzy match the url info
   return cinfo.protocol === rinfo.protocol
-    && hostre.test(rinfo.host)
+    && hostre.test(rinfo.hostname)
     && rinfo.pathname.indexOf(pathname) === 0;
 };
