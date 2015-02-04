@@ -6,12 +6,12 @@ var should = require('should')
   , plugin = require('..');
 
 describe('consulate-validate-redirect-uri', function() {
-  var isValidClientRedirectURI, app;
+  var verifyClientRedirectURI, app;
 
   beforeEach(function() {
     app = {
-      isValidClientRedirectURI: function(cb) {
-        isValidClientRedirectURI = cb;
+      verifyClientRedirectURI: function(cb) {
+        verifyClientRedirectURI = cb;
       }
     };
   });
@@ -23,7 +23,7 @@ describe('consulate-validate-redirect-uri', function() {
       redirect_uri: 'http://localhost:5000'
     };
 
-    isValidClientRedirectURI(client, 'http://localhost:5000', function(err, result) {
+    verifyClientRedirectURI(client, 'http://localhost:5000', function(err, result) {
       if (err) return done(err);
       result.should.eql(true);
       done();
@@ -37,7 +37,7 @@ describe('consulate-validate-redirect-uri', function() {
       redirect_uri: 'http://localhost:5000'
     };
 
-    isValidClientRedirectURI(client, 'http://localhost:5000/my/callback', function(err, result) {
+    verifyClientRedirectURI(client, 'http://localhost:5000/my/callback', function(err, result) {
       if (err) return done(err);
       result.should.eql(true);
       done();
@@ -51,7 +51,7 @@ describe('consulate-validate-redirect-uri', function() {
       redirect_uri: 'http://*.example.com'
     };
 
-    isValidClientRedirectURI(client, 'http://testing.123.example.com', function(err, result) {
+    verifyClientRedirectURI(client, 'http://testing.123.example.com', function(err, result) {
       if (err) return done(err);
       result.should.eql(true);
       done();
@@ -65,7 +65,7 @@ describe('consulate-validate-redirect-uri', function() {
       redirect_uri: 'http://test.*.example.com'
     };
 
-    isValidClientRedirectURI(client, 'http://test.crazy.stuff.example.com', function(err, result) {
+    verifyClientRedirectURI(client, 'http://test.crazy.stuff.example.com', function(err, result) {
       if (err) return done(err);
       result.should.eql(true);
       done();
@@ -79,7 +79,7 @@ describe('consulate-validate-redirect-uri', function() {
       redirect_uri: 'http://example.com/test/*/123'
     };
 
-    isValidClientRedirectURI(client, 'http://example.com/test/*/123', function(err, result) {
+    verifyClientRedirectURI(client, 'http://example.com/test/*/123', function(err, result) {
       if (err) return done(err);
       result.should.eql(true);
       done();
@@ -97,7 +97,7 @@ describe('consulate-validate-redirect-uri', function() {
       ]
     };
 
-    isValidClientRedirectURI(client, 'http://localhost:5000', function(err, result) {
+    verifyClientRedirectURI(client, 'http://localhost:5000', function(err, result) {
       if (err) return done(err);
       result.should.eql(true);
       done();
@@ -111,7 +111,7 @@ describe('consulate-validate-redirect-uri', function() {
       redirect_uri: 'http://localhost:5000/my/callback'
     };
 
-    isValidClientRedirectURI(client, 'http://localhost:5000', function(err, result) {
+    verifyClientRedirectURI(client, 'http://localhost:5000', function(err, result) {
       if (err) return done(err);
       result.should.eql(false);
       done();
@@ -125,7 +125,7 @@ describe('consulate-validate-redirect-uri', function() {
       redirect_uri: 'http://*.example.com'
     };
 
-    isValidClientRedirectURI(client, 'http://example.com', function(err, result) {
+    verifyClientRedirectURI(client, 'http://example.com', function(err, result) {
       if (err) return done(err);
       result.should.eql(false);
       done();
@@ -139,7 +139,7 @@ describe('consulate-validate-redirect-uri', function() {
       redirect_uri: 'https://localhost:5000'
     };
 
-    isValidClientRedirectURI(client, 'http://localhost:5000', function(err, result) {
+    verifyClientRedirectURI(client, 'http://localhost:5000', function(err, result) {
       if (err) return done(err);
       result.should.eql(false);
       done();
@@ -153,7 +153,7 @@ describe('consulate-validate-redirect-uri', function() {
       redirect_uri: 'http://example.com'
     };
 
-    isValidClientRedirectURI(client, 'http://localhost:5000', function(err, result) {
+    verifyClientRedirectURI(client, 'http://localhost:5000', function(err, result) {
       if (err) return done(err);
       result.should.eql(false);
       done();
